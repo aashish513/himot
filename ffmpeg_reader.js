@@ -31,7 +31,7 @@ class FFmpegReader {
         let list_cmd = this.additional_parameters.split('-atend');
         this.start_conversion(list_cmd[0].split(':_cmd_:').concat([
             '-i',
-            path.replace('fifo://', ''),
+            path.replace('fifo://', ''),]).concat(list_cmd[1].split(':_cmd_:')).concat([
             '-f',
             's16le',
             '-ac',
@@ -39,7 +39,7 @@ class FFmpegReader {
             '-ar',
             bitrate,
             'pipe:1',
-        ]).concat(list_cmd[1].split(':_cmd_:')));
+        ]));
     }
     convert_video(path, width, height, framerate) {
         let list_cmd = this.additional_parameters.split('-atend');
@@ -49,7 +49,7 @@ class FFmpegReader {
         }
         this.start_conversion(list_cmd[0].split(':_cmd_:').concat([
             '-i',
-            path.replace('fifo://', '').replace('image:', ''),
+            path.replace('fifo://', '').replace('image:', ''),]).concat(list_cmd[1].split(':_cmd_:')).concat([
             '-f',
             'rawvideo',
             '-pix_fmt',
@@ -59,7 +59,7 @@ class FFmpegReader {
             '-vf',
             'scale=' + width + ':' + height,
             'pipe:1',
-        ]).concat(list_cmd[1].split(':_cmd_:')));
+        ]));
     }
     start_conversion(params) {
         params = params.filter(e => e);
