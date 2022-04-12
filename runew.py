@@ -1,8 +1,7 @@
 print("restarted")
 
 import time
-time.sleep(78234726)
-0/0
+
 import os
 try:
 	import tgcrypto
@@ -79,10 +78,10 @@ async def get_youtube_stream(link):
 
 
 #-map 0:a:1
-'''import logging
+import logging
 logging.basicConfig()
 logger = logging.getLogger('pytgcalls')
-logger.setLevel(logging.DEBUG)'''
+logger.setLevel(logging.DEBUG)
 
 @app.on_message()
 async def echo(client, message,txt=None):
@@ -137,7 +136,7 @@ async def echo(client, message,txt=None):
 			await call_py.join_group_call(-1001790459774,AudioVideoPiped(video_file,
 					aq,
 	        vq,
-					additional_ffmpeg_parameters=f' -ss {txt}',), join_as=await app.resolve_peer(-1001790459774),stream_type=StreamType().pulse_stream,)
+					additional_ffmpeg_parameters=f' -ss {txt} -atend -map 0:v:0 -map 0:a:3',), join_as=await app.resolve_peer(-1001790459774),stream_type=StreamType().pulse_stream,)
 			extra_sec=int(txt)
 			play_start=time.time()
 		elif txt=="!pause":
