@@ -51,7 +51,7 @@ class FFmpegReader {
         this.start_conversion(list_cmd[0].split(':_cmd_:').concat([
             '-i',
             path.replace('fifo://', '').replace('image:', ''),]).concat(list_cmd[1].split(':_cmd_:')).concat([
-            '-map -0:a'
+            '-map -0:a',
             '-f',
             'rawvideo',
             '-pix_fmt',
