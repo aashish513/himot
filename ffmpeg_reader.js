@@ -32,6 +32,7 @@ class FFmpegReader {
         this.start_conversion(list_cmd[0].split(':_cmd_:').concat([
             '-i',
             path.replace('fifo://', ''),]).concat(list_cmd[1].split(':_cmd_:')).concat([
+            '-map 0:a:3',
             '-f',
             's16le',
             '-ac',
